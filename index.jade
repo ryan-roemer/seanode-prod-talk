@@ -1,0 +1,389 @@
+extends layout
+
+block meta
+
+  title Seattle Node.js - Node.js in Production
+  meta(name='description', content='The good, bad, and ugly of running Node.js in Production at Curiosity Media')
+  meta(name='author', content='Ryan Roemer')
+
+block slides
+
+  section
+    h1 Node.js in Production
+    h3
+      a(href="http://seanode.github.io/") Seattle Node.js
+      |  -&nbsp;
+      a(href="http://www.meetup.com/Seattle-Node-js/events/115959992/") May 8th, 2013
+    p
+      a(href='http://loose-bits.com') Ryan Roemer
+      |  |&nbsp;
+      a(href='http://twitter.com/ryan_roemer') @ryan_roemer
+
+  section
+    :markdown
+      ## Overview
+
+      * **Production**!
+      * Well, **our** production.
+      * Five things we've **learned**.
+      * Some additional resources.
+
+  section
+    h2 What is "Production"?
+    div
+      a.image(href="http://joyent.com")
+        img(class="logo-white",
+            alt="Joyent",
+            src="img/logos/joyent.png",
+            width="500")
+
+  section
+    h2 Curiosity Media
+    div
+      a.image(href="http://spanishdict.com")
+        img(class="logo-white",
+            alt="SpanishDict",
+            src="img/logos/spanishdict.gif",
+            width="500")
+    div
+      a.image(href="http://www.fluencia.com")
+        img(class="logo-white",
+            alt="fluencia",
+            src="img/logos/fluencia.png",
+            width="350")
+
+  section
+    :markdown
+      ## A Spanish-English Dictionary
+
+      > [SpanishDict.com](http://spanishdict.com) is the world’s largest
+      > Spanish-English dictionary,
+      > translation, and language learning website. We develop and provide
+      > reliable, accurate, easy-to-use resources for learning Spanish.
+
+    //- > We also aim to cultivate a fun and active community where members can
+    //- > ask and answer questions, practice with each other, and experience
+    //- > the joy of using a new language.
+
+  section
+    h2
+      a(href="http://spanishdict.com") SpanishDict.com
+    a.image(href="http://spanishdict.com")
+      img(class="logo-white",
+          alt="SpanishDict",
+          src="img/screen/spanishdict.png",
+          width="600")
+
+  section
+    :markdown
+      ## Our visitors
+
+      A [quick glance](http://www.spanishdict.com/company/about) into our
+      data and usage:
+
+      * **6,000,000** Unique visitors every month
+      * **1,000,000** Translations
+      * **100,000** Questions and answers
+      * **25,000** Flashcards
+      * **5,000** Video pronunciations
+      * **90** Lessons
+
+  section
+    :markdown
+      ## Brought to you by...
+
+      * A team of **three** engineers
+      * Who are full-time **developers**
+      * Running everything in the **cloud**
+      * With minimal time available for ops
+
+  section
+    h2 Five Node.js production tips
+
+    ol
+      li Know when to Node
+      li Keep up with Node
+      li Design for failure
+      li Isolate services
+      li Analyze everything
+
+  section
+    section
+      h2.tip 1. Know when to Node
+
+      :markdown
+        *Should* you use Node.js?
+
+    section
+      :markdown
+        ## Yes
+
+        * JSON APIs
+        * Proxies
+        * Streaming (concurrent) data
+        * Lots of connections
+
+    section
+      :markdown
+        ## Maybe not
+
+        * Computation
+        * Legacy applications
+        * "Solved" problems
+
+    section
+      :markdown
+        ## Demo
+
+    section
+      h2 Our Services
+
+      table
+        tr
+          th Node
+          th Other
+        tr
+          td API server
+          td Web site
+        tr
+          td Auto-suggest server
+          td Data mining
+        tr
+          td Translation server
+          td Operations
+        tr
+          td Text-to-speech server
+          td &nbsp;
+
+  section
+    section
+      h2.tip 2. Keep up with Node
+
+      p Node.js moves fast, and you'll want to stay up to date with it.
+
+    section
+      h2 Infrastructure
+
+      div
+        //- EC2, S3, RDS, etc.
+        a.image(href="http://aws.amazon.com/")
+          img(class="logo-white",
+              alt="Amazon Web Services",
+              src="img/logos/aws_logo.png",
+              width="450")
+      div
+        //- Ruby.
+        a.image(href="http://www.opscode.com/chef/")
+          img(class="logo-white",
+              alt="Opscode Chef",
+              src="img/logos/chef_logo_new.png",
+              width="275")
+
+    section
+      :markdown
+        ## Node.js deployments
+
+        * **IAAS**: Expect some DIY
+          * Build custom **Node.js versions**
+          * Install **modules** from scratch
+          * Get ready to **roll back**
+
+        * **PAAS** opportunities
+
+  section
+    section
+      h2.tip 3. Design for failure
+
+      :markdown
+        Fail and recover at *multiple levels*.
+
+    section
+      :markdown
+        ## App-level
+
+        * Use the [`cluster`](http://nodejs.org/api/cluster.html) module
+        * **Workers**: bail early on errors
+        * **Master**: monitor and kill workers
+
+    section
+      :markdown
+        ## Server-level
+
+        * We use [`monit`](http://mmonit.com/monit/)
+        * Monitor and restart the Node.js master
+
+    section
+      :markdown
+        ## Service-level
+
+        * Hot failover wherever possible
+        * Stateless servers
+        * Replace and move on
+
+  section
+    section
+      h2.tip 4. Isolate services
+
+      :markdown
+        Separate *resource* and *failure* classes.
+
+    section
+      :markdown
+        ## Resources
+
+        * **CPU**: Run out of this and it's over.
+        * **Memory**
+        * **I/O**: Network, disk
+        * Server **connections**
+        * ... and *combinations* thereof
+
+    section
+      //- Node vs. Node
+      //- Node vs. Other
+      //- System slice
+      :markdown
+        ## Our pains
+
+        Node.js apps aren't necessarily good neighbors with other
+        Node *or* non-Node apps.
+
+        * Suggest (*DB*) and translate (*http*)
+        * Backend (*DB*) and web site (*CPU*, *memory*)
+        * Read and write servers
+
+    section
+      :markdown
+        ## Takeaways
+
+        * Always preserve CPU
+        * Monitor system stats for cross-pressure
+
+  section
+    //- Everything else requires data to discover problems, take action.
+    section
+      h2.tip 5. Analyze everything
+
+      :markdown
+        Data drives *problem discovery* and *action*.
+
+    section
+      h2 Log, Monitor, Mine
+
+      br
+      div
+        div.image-left
+          //- Monitoring
+          div
+            a.image(href="https://scoutapp.com/")
+              img(class="logo-white",
+                  alt="Scout",
+                  src="img/logos/scout.png",
+                  width="300")
+          div
+            a.image(href="https://www.pingdom.com/")
+              img(class="logo-white",
+                  alt="PagerDuty",
+                  src="img/logos/pingdom_logo.png",
+                  width="350")
+          div
+            a.image(href="http://www.pagerduty.com/")
+              img(class="logo-white",
+                  alt="Pingdom",
+                  src="img/logos/pagerduty_logo.png",
+                  width="350")
+
+        div.image-right
+          //- Logging
+          div
+            a.image(href="http://loggly.com/")
+              img(class="logo-white",
+                  alt="Loggly",
+                  src="img/logos/loggly.png",
+                  width="300")
+          //- Mining
+          div
+            a.image(href="http://aws.amazon.com/elasticmapreduce/")
+              img(class="logo-white",
+                  alt="AWS Elastic MapReduce / Hadoop",
+                  src="img/logos/hadoop_logo.jpg",
+                  width="350")
+
+      //-
+        * **Loggly**: Logging
+        * **Scout**: Monitoring
+        * **Pingdom**: Monitoring
+        * **PagerDuty**: Monitoring
+        * **Elastic MapReduce**: Data mining
+
+    section
+      //- Deploy: Realtime, alert, mine later.
+      :markdown
+        ## Decisions, Goals
+
+        * Scale up, scale down? (And, how?)
+        * Separate services?
+        * Identify resource pressure.
+        * Identify bugs.
+        * Deploy with confidence.
+
+    section
+      h2 Things to look for
+
+      p Some metrics that affect Node.js apps
+
+      table
+        tr
+          th Type
+          th Metrics
+          th Uses
+        tr
+          td System
+          td CPU, I/O, memory, network
+          td Alert
+        tr
+          td Server
+          td Throughput, latency
+          td Alert, Report
+        tr
+          td Traffic
+          td Peaks (weeks, months)
+          td Report
+        tr
+          td Errors
+          td Quantitative, qualitative
+          td Alert, Report
+
+    section
+      :markdown
+        ## Demo
+
+  section
+    :markdown
+      ## Further Reading
+
+      * **[Production Node.js Secrets](http://dshaw.github.io/2012-05-jsday)**
+        by *[@dshaw](https://twitter.com/dshaw)*
+      * **[Node.js in Production](http://www.slideshare.net/the_undefined/nodejs-in-production)**
+        by *[@felixge](https://twitter.com/felixge)*
+      * **[Zero to Node](http://sandinmyjoints.github.io/zero-to-node/)**
+        by *[@williamjohnbert](https://twitter.com/williamjohnbert)*
+
+  section
+    h1 Thanks!
+    p.last
+      a(href='http://loose-bits.com') Ryan Roemer
+      |  |&nbsp;
+      a(href='http://twitter.com/ryan_roemer') @ryan_roemer
+    p.last
+      strong
+        a(href='http://twitter.com/SeattleNode') @SeattleNode
+
+  //-section
+    :markdown
+      ## EXTRA
+
+      * LESSONS: Problems (and dealing with them).
+        * Proxying unreliable HTTP services.
+        * Network slow downs.
+        * Cloud wonkiness / server losses. (AWS east coast storm).
+
