@@ -1,3 +1,9 @@
+/* Page */
+.reveal {
+  font-size: 2.5em;
+}
+
+/* Elements */
 .reveal blockquote:before,
 .reveal blockquote:after {
   content: "" !important;
@@ -6,10 +12,6 @@
 .reveal blockquote p {
   text-align: left;
   font-size: 0.9em;
-}
-
-.reveal {
-  font-size: 2.5em;
 }
 .reveal h1 {
   font-size: 3.0em;
@@ -58,10 +60,19 @@
 }
 .reveal table th {
   -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-top-radius: 10px;
+     -moz-border-radius: 10px;
+      border-top-radius: 10px;
 }
 
+/* Reveal.js Overrides */
+.reveal .roll {
+  -webkit-perspective: none;
+     -moz-perspective: none;
+      -ms-perspective: none;
+          perspective: none;
+}
+
+/* Custom */
 .image-left {
   float: left;
   text-align: center;
