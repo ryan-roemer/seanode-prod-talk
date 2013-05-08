@@ -38,19 +38,31 @@ block slides
             width="500")
 
   section
-    h2 Curiosity Media
-    div
-      a.image(href="http://spanishdict.com")
-        img(class="logo-white",
-            alt="SpanishDict",
-            src="img/logos/spanishdict.gif",
-            width="500")
-    div
-      a.image(href="http://www.fluencia.com")
-        img(class="logo-white",
-            alt="fluencia",
-            src="img/logos/fluencia.png",
-            width="350")
+    section
+      h2 Curiosity Media
+      div
+        a.image(href="http://spanishdict.com")
+          img(class="logo-white",
+              alt="SpanishDict",
+              src="img/logos/spanishdict.gif",
+              width="500")
+      div
+        a.image(href="http://www.fluencia.com")
+          img(class="logo-white",
+              alt="fluencia",
+              src="img/logos/fluencia.png",
+              width="350")
+
+    section
+      :markdown
+        ## Brought to you by...
+
+        * A team of **three** engineers
+        * Who are full-time **developers**
+        * Running everything in the **cloud**
+        * With minimal time available for ops
+
+      .last
 
   section
     section
@@ -94,15 +106,6 @@ block slides
         * **90** Lessons
 
     section
-      :markdown
-        ## Brought to you by...
-
-        * A team of **three** engineers
-        * Who are full-time **developers**
-        * Running everything in the **cloud**
-        * With minimal time available for ops
-
-    section
       h2 Our Services
 
       table
@@ -144,8 +147,7 @@ block slides
           td Text-to-speech server
           td 400 / min
 
-    section
-      p . . .
+      .last
 
   section
     h2 Five Node.js production tips
@@ -183,8 +185,7 @@ block slides
         * **Legacy** applications
         * "**Solved**" problems (fuzzy search, NLP, etc.)
 
-    section
-      p . . .
+      .last
 
   section
     section
@@ -227,8 +228,7 @@ block slides
           * Install **modules** from scratch
           * Get ready to **roll back**
 
-    section
-      p . . .
+      .last
 
   section
     section
@@ -261,8 +261,7 @@ block slides
         * **Stateless**, fungible servers
         * **Hot failover** wherever possible
 
-    section
-      p . . .
+      .last
 
   section
     section
@@ -301,8 +300,7 @@ block slides
         * Always preserve CPU
         * Monitor system stats for cross-pressure
 
-    section
-      p . . .
+      .last
 
   section
     //- Everything else requires data to discover problems, take action.
@@ -313,7 +311,6 @@ block slides
         How well are we addressing lessons 1-4?
 
         Data drives *problem discovery* and *action*.
-
 
     section
       h2 Log, Monitor, Mine
@@ -406,6 +403,8 @@ block slides
     section
       :markdown
         ## Demo
+
+      .last
 
   section
     h2 Recap

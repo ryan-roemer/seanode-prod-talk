@@ -41,6 +41,17 @@
   background: #fff;
   border: 3px solid #ccc;
 }
+.reveal section div.last {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+      border-top-radius: 10px;
+  background-color: #e7ad52;
+}
 
 .reveal table {
   margin-top: 40px;
