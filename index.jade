@@ -53,49 +53,74 @@ block slides
             width="350")
 
   section
-    :markdown
-      ## A Spanish-English Dictionary
+    section
+      h2
+        a(href="http://spanishdict.com") SpanishDict.com
+      a.image(href="http://spanishdict.com")
+        img(class="logo-white",
+            alt="SpanishDict",
+            src="img/screen/spanishdict.png",
+            width="600")
 
-      > [SpanishDict.com](http://spanishdict.com) is the world’s largest
-      > Spanish-English dictionary,
-      > translation, and language learning website. We develop and provide
-      > reliable, accurate, easy-to-use resources for learning Spanish.
+    section
+      :markdown
+        ## A Spanish-English Dictionary
 
-    //- > We also aim to cultivate a fun and active community where members can
-    //- > ask and answer questions, practice with each other, and experience
-    //- > the joy of using a new language.
+        > [SpanishDict.com](http://spanishdict.com) is the world’s largest
+        > Spanish-English dictionary,
+        > translation, and language learning website. We develop and provide
+        > reliable, accurate, easy-to-use resources for learning Spanish.
 
-  section
-    h2
-      a(href="http://spanishdict.com") SpanishDict.com
-    a.image(href="http://spanishdict.com")
-      img(class="logo-white",
-          alt="SpanishDict",
-          src="img/screen/spanishdict.png",
-          width="600")
+      //- > We also aim to cultivate a fun and active community where members can
+      //- > ask and answer questions, practice with each other, and experience
+      //- > the joy of using a new language.
 
-  section
-    :markdown
-      ## Our visitors
+    section
+      :markdown
+        ## Our visitors
 
-      A [quick glance](http://www.spanishdict.com/company/about) into our
-      data and usage:
+        A [quick glance](http://www.spanishdict.com/company/about) into our
+        data and usage:
 
-      * **6,000,000** Unique visitors every month
-      * **1,000,000** Translations
-      * **100,000** Questions and answers
-      * **25,000** Flashcards
-      * **5,000** Video pronunciations
-      * **90** Lessons
+        * **6,000,000** Unique visitors every month
+        * **1,000,000** Translations
+        * **100,000** Questions and answers
+        * **25,000** Flashcards
+        * **5,000** Video pronunciations
+        * **90** Lessons
 
-  section
-    :markdown
-      ## Brought to you by...
+    section
+      :markdown
+        ## Brought to you by...
 
-      * A team of **three** engineers
-      * Who are full-time **developers**
-      * Running everything in the **cloud**
-      * With minimal time available for ops
+        * A team of **three** engineers
+        * Who are full-time **developers**
+        * Running everything in the **cloud**
+        * With minimal time available for ops
+
+    section
+      h2 Our Services
+
+      table
+        tr
+          th Node
+          th Other
+        tr
+          td API server
+          td Web site
+        tr
+          td Auto-suggest server
+          td Data mining
+        tr
+          td Translation server
+          td Operations
+        tr
+          td Text-to-speech server
+          td &nbsp;
+
+    section
+      :markdown
+        ## Demo
 
   section
     h2 Five Node.js production tips
@@ -118,49 +143,31 @@ block slides
       :markdown
         ## Yes
 
-        * JSON APIs
-        * Proxies
-        * Concurrent data
-        * Lots of connections
-        * Anything that can use [`stream`](http://nodejs.org/api/stream.html)'s
+        * **Small** apps (think JSON APIs)
+        * "**Glue**" for services or data
+          * Proxies
+          * Concurrent data
+          * Use the [`stream`](http://nodejs.org/api/stream.html) module
+        * Lots of **connections**
 
     section
       :markdown
         ## Maybe not
 
-        * Computation
-        * Legacy applications
-        * "Solved" problems
+        * **Computation**
+        * **Legacy** applications
+        * "**Solved**" problems (fuzzy search, NLP, etc.)
 
     section
-      :markdown
-        ## Demo
-
-    section
-      h2 Our Services
-
-      table
-        tr
-          th Node
-          th Other
-        tr
-          td API server
-          td Web site
-        tr
-          td Auto-suggest server
-          td Data mining
-        tr
-          td Translation server
-          td Operations
-        tr
-          td Text-to-speech server
-          td &nbsp;
+      p . . .
 
   section
     section
       h2.tip 2. Keep up with Node
 
-      p Node.js moves fast, and you'll want to stay up to date with it.
+      P Bleeding edge, lots of breakage.
+      p Stay up to date with Node.js and libraries.
+
 
     section
       h2 Infrastructure
@@ -184,12 +191,19 @@ block slides
       :markdown
         ## Node.js deployments
 
+        * **PAAS**: Often, the easier way.
+          * [Joyent](http://joyent.com/),
+            [Heroku](https://www.heroku.com/),
+            [Nodejitsu](https://www.nodejitsu.com/),
+            etc.
+
         * **IAAS**: Expect some DIY
           * Build custom **Node.js versions**
           * Install **modules** from scratch
           * Get ready to **roll back**
 
-        * **PAAS** opportunities
+    section
+      p . . .
 
   section
     section
@@ -203,24 +217,27 @@ block slides
         ## App-level
 
         * Use the [`cluster`](http://nodejs.org/api/cluster.html) module
-        * **Workers**: bail early on errors
+          * [Example](https://gist.github.com/ryan-roemer/3656510) (in CS)
+        * **Workers**: die early on errors
         * **Master**: monitor and kill workers
-        * [Example](https://gist.github.com/ryan-roemer/3656510) (in CS)
 
     section
       :markdown
         ## Server-level
 
-        * We use [`monit`](http://mmonit.com/monit/)
-        * Monitor and restart the Node.js master
+        * Use [`monit`](http://mmonit.com/monit/) or alternatives
+        * Restart the Node.js **master**
 
     section
       :markdown
         ## Service-level
 
-        * Hot failover wherever possible
-        * Stateless servers
-        * Replace and move on
+        * Have **lots** of **small** apps
+        * **Stateless**, fungible servers
+        * **Hot failover** wherever possible
+
+    section
+      p . . .
 
   section
     section
@@ -246,12 +263,11 @@ block slides
       :markdown
         ## Our pains
 
-        Node.js apps aren't necessarily good neighbors with other
-        Node *or* non-Node apps.
+        Node.js apps aren't necessarily good neighbors.
 
-        * Suggest (*DB*) and translate (*http*)
-        * Backend (*DB*) and web site (*CPU/load*, *memory*)
-        * Read and write servers
+        * **Suggest** (*DB*) and **translate** (*http*)
+        * **Backend** (*DB*) and **web site** (*CPU/load*, *memory*)
+        * **Read** and **write** servers
 
     section
       :markdown
@@ -260,13 +276,19 @@ block slides
         * Always preserve CPU
         * Monitor system stats for cross-pressure
 
+    section
+      p . . .
+
   section
     //- Everything else requires data to discover problems, take action.
     section
       h2.tip 5. Analyze everything
 
       :markdown
+        How well are we addressing lessons 1-4?
+
         Data drives *problem discovery* and *action*.
+
 
     section
       h2 Log, Monitor, Mine
@@ -318,17 +340,6 @@ block slides
         * **Elastic MapReduce**: Data mining
 
     section
-      //- Deploy: Realtime, alert, mine later.
-      :markdown
-        ## Decisions, Goals
-
-        * Scale up, scale down? (And, how?)
-        * Separate services?
-        * Identify resource pressure.
-        * Identify bugs.
-        * Deploy with confidence.
-
-    section
       h2 Things to look for
 
       p Some metrics that affect Node.js apps
@@ -356,8 +367,30 @@ block slides
           td Alert, Report
 
     section
+      //- Deploy: Realtime, alert, mine later.
+      :markdown
+        ## Decisions, Goals
+
+        * **Identify**
+          * Resource pressure
+          * Bugs
+        * **Decide**
+          * Scale up, scale down?
+          * Separate?
+
+    section
       :markdown
         ## Demo
+
+  section
+    h2 Recap
+
+    ol
+      li Know when to Node
+      li Keep up with Node
+      li Design for failure
+      li Isolate services
+      li Analyze everything
 
   section
     :markdown
