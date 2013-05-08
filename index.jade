@@ -64,6 +64,10 @@ block slides
 
     section
       :markdown
+        ## Demo
+
+    section
+      :markdown
         ## A Spanish-English Dictionary
 
         > [SpanishDict.com](http://spanishdict.com) is the world’s largest
@@ -119,8 +123,29 @@ block slides
           td &nbsp;
 
     section
-      :markdown
-        ## Demo
+      h2 Our Traffic
+
+      p Very low latency for our db-backed services.
+
+      table
+        tr
+          th Service
+          th Reqs/min
+        tr
+          td API server
+          td 35K / min
+        tr
+          td Auto-suggest server
+          td 15K / min
+        tr
+          td Translation server
+          td 2.5K / min
+        tr
+          td Text-to-speech server
+          td 400 / min
+
+    section
+      p . . .
 
   section
     h2 Five Node.js production tips
