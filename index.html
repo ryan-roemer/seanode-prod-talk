@@ -73,7 +73,7 @@ data and usage:</p>
         </section>
         <section><h2>Yes</h2>
 
-<ul><li>JSON APIs</li><li>Proxies</li><li>Streaming (concurrent) data</li><li>Lots of connections</li></ul>
+<ul><li>JSON APIs</li><li>Proxies</li><li>Concurrent data</li><li>Lots of connections</li><li>Anything that can use <a href="http://nodejs.org/api/stream.html"><code>stream</code></a>&#39;s</li></ul>
         </section>
         <section><h2>Maybe not</h2>
 
@@ -130,7 +130,7 @@ data and usage:</p>
         </section>
         <section><h2>App-level</h2>
 
-<ul><li>Use the <a href="http://nodejs.org/api/cluster.html"><code>cluster</code></a> module</li><li><strong>Workers</strong>: bail early on errors</li><li><strong>Master</strong>: monitor and kill workers</li></ul>
+<ul><li>Use the <a href="http://nodejs.org/api/cluster.html"><code>cluster</code></a> module</li><li><strong>Workers</strong>: bail early on errors</li><li><strong>Master</strong>: monitor and kill workers</li><li><a href="https://gist.github.com/ryan-roemer/3656510">Example</a> (in CS)</li></ul>
         </section>
         <section><h2>Server-level</h2>
 
@@ -147,14 +147,14 @@ data and usage:</p>
         </section>
         <section><h2>Resources</h2>
 
-<ul><li><strong>CPU</strong>: Run out of this and it&#39;s over.</li><li><strong>Memory</strong></li><li><strong>I/O</strong>: Network, disk</li><li>Server <strong>connections</strong></li><li>... and <em>combinations</em> thereof</li></ul>
+<ul><li><strong>CPU/Load</strong>: Run out of this and it&#39;s over.</li><li><strong>Memory</strong></li><li><strong>I/O</strong>: Network, disk</li><li>Server <strong>connections</strong></li><li>... and <em>combinations</em> thereof</li></ul>
         </section>
         <section><h2>Our pains</h2>
 
 <p>Node.js apps aren&#39;t necessarily good neighbors with other
 Node <em>or</em> non-Node apps.</p>
 
-<ul><li>Suggest (<em>DB</em>) and translate (<em>http</em>)</li><li>Backend (<em>DB</em>) and web site (<em>CPU</em>, <em>memory</em>)</li><li>Read and write servers</li></ul>
+<ul><li>Suggest (<em>DB</em>) and translate (<em>http</em>)</li><li>Backend (<em>DB</em>) and web site (<em>CPU/load</em>, <em>memory</em>)</li><li>Read and write servers</li></ul>
         </section>
         <section><h2>Takeaways</h2>
 

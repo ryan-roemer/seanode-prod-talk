@@ -120,8 +120,9 @@ block slides
 
         * JSON APIs
         * Proxies
-        * Streaming (concurrent) data
+        * Concurrent data
         * Lots of connections
+        * Anything that can use [`stream`](http://nodejs.org/api/stream.html)'s
 
     section
       :markdown
@@ -204,6 +205,7 @@ block slides
         * Use the [`cluster`](http://nodejs.org/api/cluster.html) module
         * **Workers**: bail early on errors
         * **Master**: monitor and kill workers
+        * [Example](https://gist.github.com/ryan-roemer/3656510) (in CS)
 
     section
       :markdown
@@ -231,7 +233,7 @@ block slides
       :markdown
         ## Resources
 
-        * **CPU**: Run out of this and it's over.
+        * **CPU/Load**: Run out of this and it's over.
         * **Memory**
         * **I/O**: Network, disk
         * Server **connections**
@@ -248,7 +250,7 @@ block slides
         Node *or* non-Node apps.
 
         * Suggest (*DB*) and translate (*http*)
-        * Backend (*DB*) and web site (*CPU*, *memory*)
+        * Backend (*DB*) and web site (*CPU/load*, *memory*)
         * Read and write servers
 
     section
