@@ -241,10 +241,12 @@ block slides
       :markdown
         ## App-level
 
+        * **Errors**
+          * Handle: `uncaughtException`
+          * Listen: `foo.on("error")`
         * Use the [`cluster`](http://nodejs.org/api/cluster.html) module
-          * [Example](https://gist.github.com/ryan-roemer/3656510) (in CS)
-        * **Workers**: die early on errors
-        * **Master**: monitor and kill workers
+          * **Workers**: die early on errors
+          * **Master**: monitor and kill workers
 
     section
       :markdown
@@ -275,9 +277,7 @@ block slides
         ## Resources
 
         * **CPU/Load**: Run out of this and it's over.
-        * **Memory**
-        * **I/O**: Network, disk
-        * Server **connections**
+        * *Also*, memory, I/O, etc.
         * ... and *combinations* thereof
 
     section

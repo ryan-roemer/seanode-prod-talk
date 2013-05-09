@@ -168,7 +168,7 @@ etc.</p></li></ul></li><li><p><strong>IAAS</strong>: Expect some DIY</p><ul><li>
         </section>
         <section><h2>App-level</h2>
 
-<ul><li>Use the <a href="http://nodejs.org/api/cluster.html"><code>cluster</code></a> module<ul><li><a href="https://gist.github.com/ryan-roemer/3656510">Example</a> (in CS)</li></ul></li><li><strong>Workers</strong>: die early on errors</li><li><strong>Master</strong>: monitor and kill workers</li></ul>
+<ul><li><strong>Errors</strong><ul><li>Handle: <code>uncaughtException</code></li><li>Listen: <code>foo.on(&quot;error&quot;)</code></li></ul></li><li>Use the <a href="http://nodejs.org/api/cluster.html"><code>cluster</code></a> module<ul><li><strong>Workers</strong>: die early on errors</li><li><strong>Master</strong>: monitor and kill workers</li></ul></li></ul>
         </section>
         <section><h2>Server-level</h2>
 
@@ -186,7 +186,7 @@ etc.</p></li></ul></li><li><p><strong>IAAS</strong>: Expect some DIY</p><ul><li>
         </section>
         <section><h2>Resources</h2>
 
-<ul><li><strong>CPU/Load</strong>: Run out of this and it&#39;s over.</li><li><strong>Memory</strong></li><li><strong>I/O</strong>: Network, disk</li><li>Server <strong>connections</strong></li><li>... and <em>combinations</em> thereof</li></ul>
+<ul><li><strong>CPU/Load</strong>: Run out of this and it&#39;s over.</li><li><em>Also</em>, memory, I/O, etc.</li><li>... and <em>combinations</em> thereof</li></ul>
         </section>
         <section><h2>Our pains</h2>
 
