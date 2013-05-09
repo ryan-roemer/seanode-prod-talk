@@ -24,9 +24,6 @@
   padding-bottom: 0.3em;
 }
 
-.reveal p.last {
-  margin-top: 0.5em;
-}
 .reveal code {
   font-size: 1.25em;
 }
@@ -42,6 +39,7 @@
   border: 3px solid #ccc;
 }
 .reveal section div.last {
+  display: none;
   position: absolute;
   top: 0px;
   right: 0px;
