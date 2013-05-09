@@ -2,6 +2,11 @@
 .reveal {
   font-size: 2.5em;
 }
+@media print {
+  .reveal {
+    font-size: 2.0em;
+  }
+}
 
 /* Elements */
 .reveal blockquote:before,
